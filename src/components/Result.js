@@ -15,37 +15,12 @@ class Result extends Component {
     }
 
     findId = (fileName) => {
-        var oriName = fileName.split(".")[0];
-        // console.log(oriName);
-        var finalName = "";
-        for (let i = 0; i < oriName.length; i++) {
-            if (oriName.charAt(i) === '_') {
-                finalName += ' ';
-            } else {
-                finalName += oriName.charAt(i).toLowerCase();
+        var id;
+        for (let key in hero) {
+            if (fileName === hero[key].image.full) {
+                id = hero[key].id;
             }
         }
-        console.log(finalName);
-        var id; 
-        hero.map((data, index) => {
-            var targetName = data.localized_name;
-            var formattedTargetName = "";
-            for (let i = 0; i < targetName.length; i++) {   
-                if (targetName.charAt(i).toLowerCase() === '-') {
-                    formattedTargetName += ' ';
-                } else if (targetName.charAt(i).toLowerCase() === '\'') {
-                    continue;
-                } else {
-                    formattedTargetName += targetName.charAt(i).toLowerCase();
-                }
-                
-            }
-            // console.log(formattedTargetName);
-            if (finalName === formattedTargetName) {
-                id = data.id;
-                console.log(id);
-            }
-        })
         // var id = hero.filter(
         //     function(hero) {return hero.localized_name == finalName}
         // );
