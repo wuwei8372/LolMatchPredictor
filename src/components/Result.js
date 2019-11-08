@@ -18,7 +18,7 @@ class Result extends Component {
         var id;
         for (let key in hero) {
             if (fileName === hero[key].image.full) {
-                id = hero[key].id;
+                id = hero[key].key;
             }
         }
         // var id = hero.filter(
