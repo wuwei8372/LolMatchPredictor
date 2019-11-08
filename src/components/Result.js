@@ -43,13 +43,25 @@ class Result extends Component {
         }
         console.log(myTeamIds);
         console.log(opponentTeamIds);
+        var test = JSON.stringify(
+            {
+                "myTeam": myTeamIds,
+                "opponentTeam": opponentTeamIds,
+                // "myTeam": [],
+                // "opponentTeam": [],
+                //"tier": this.state.tier
+            });
+        console.log(test);
        const response = await fetch(
         //   `${uriBase}?visualFeatures=${visualFeatures}&details=${details}&language=${language}`,
-        `http://localhost:5000/predictMatch`,
+        `http://127.0.0.1:5000/calculateProbability`,
           {
             method: 'post',
             headers: new Headers({
                 'content-type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
                 // 'Accept': 'application/json',
               }),
             // body: JSON.stringify({"url": "http://digitalnativestudios.com/textmeshpro/docs/rich-text/line-indent.png"})
@@ -59,7 +71,7 @@ class Result extends Component {
                     "opponentTeam": opponentTeamIds,
                     // "myTeam": [],
                     // "opponentTeam": [],
-                    "tier": this.state.tier
+                    //"tier": this.state.tier
                 }
             ) 
           }
@@ -68,7 +80,8 @@ class Result extends Component {
         var rep = response.json()
         var resultString = await rep.then(function(value) {
             // console.log(value.res);
-            return value.res;
+            //return value.res;
+            return value.result;
           });
         
         console.log(resultString.toString().substr(0, 5));
