@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../css/Result.css';
-import hero from '../heromap/hero.json' 
+import hero from '../heromap/hero.json';
+import heroBigData from '../heromap/bigDataResult.json';
 class Result extends Component {
     
     constructor(props) {
@@ -8,7 +9,8 @@ class Result extends Component {
         this.state = {
             result : "",
             tier: "unselected",
-            favoriteHero: "unselected"
+            favoriteHero: "unselected",
+            topTeammates: "not favaourite hero selected"
       }
       this.predictResult = this.predictResult.bind(this);
       this.findId = this.findId.bind(this);
@@ -28,6 +30,7 @@ class Result extends Component {
     }
 
     async predictResult() {
+        
         // console.log(this.convertHeroNameToId("abad_do_+n"));
         var myTeamIds = [];
         var opponentTeamIds = [];
@@ -108,7 +111,7 @@ class Result extends Component {
   render() {
     return (
       <div className="Result">
-        <div className="information">
+        {/* <div className="information">
             <h3>Enter game infomation for team match result prediction and hero recommendation:</h3>
             <form>
                 <label>
@@ -123,7 +126,7 @@ class Result extends Component {
                 </label>
             </form>
             <h4 className="info">Your selected player tier is: {this.state.tier}, favorite hero is: {this.state.favoriteHero}</h4>
-        </div>
+        </div> */}
         <div className="preditArea">
             <div className="button">
                 <button onClick={this.predictResult}>
@@ -135,6 +138,12 @@ class Result extends Component {
                 <h1 className="info">
                     The propablity of my team win is : {this.state.result}
                 </h1>
+                {/* <a>
+
+                </a>
+                <h1 className="info">
+                    Recommended heroes for your favorite hero to team up : {this.state.topTeammates}
+                </h1> */}
             </div>
         </div>
         

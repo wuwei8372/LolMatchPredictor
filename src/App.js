@@ -4,16 +4,17 @@ import Background from './images/background.png';
 import TeamPick from './components/TeamPick';
 import Result from './components/Result';
 import HeroPicker from './components/HeroPikcer';
-import hero from './heromap/hero.json' 
+import hero from './heromap/hero.json';
+import heroBigData from './heromap/bigDataResult.json';
 
 const FILE_NAMES = ["Aatrox.png","Ahri.png","Akali.png","Alistar.png","Amumu.png","Anivia.png","Annie.png","Ashe.png","AurelionSol.png","Azir.png","Bard.png","Blitzcrank.png","Brand.png","Braum.png","Caitlyn.png","Camille.png","Cassiopeia.png","Chogath.png","Corki.png","Darius.png","Diana.png","DrMundo.png","Draven.png","Ekko.png","Elise.png","Evelynn.png","Ezreal.png","Fiddlesticks.png","Fiora.png","Fizz.png","Galio.png","Gangplank.png","Garen.png","Gnar.png","Gragas.png","Graves.png","Hecarim.png","Heimerdinger.png","Illaoi.png","Irelia.png","Ivern.png","Janna.png","JarvanIV.png","Jax.png","Jayce.png","Jhin.png","Jinx.png","Kaisa.png","Kalista.png","Karma.png","Karthus.png","Kassadin.png","Katarina.png","Kayle.png","Kayn.png","Kennen.png","Khazix.png","Kindred.png","Kled.png","KogMaw.png","Leblanc.png","LeeSin.png","Leona.png","Lissandra.png","Lucian.png","Lulu.png","Lux.png","Malphite.png","Malzahar.png","Maokai.png","MasterYi.png","MissFortune.png","MonkeyKing.png","Mordekaiser.png","Morgana.png","Nami.png","Nasus.png","Nautilus.png","Neeko.png","Nidalee.png","Nocturne.png","Nunu.png","Olaf.png","Orianna.png","Ornn.png","Pantheon.png","Poppy.png","Pyke.png","Qiyana.png","Quinn.png","Rakan.png","Rammus.png","RekSai.png","Renekton.png","Rengar.png","Riven.png","Rumble.png","Ryze.png","Sejuani.png","Senna.png","Shaco.png","Shen.png","Shyvana.png","Singed.png","Sion.png","Sivir.png","Skarner.png","Sona.png","Soraka.png","Swain.png","Sylas.png","Syndra.png","TahmKench.png","Taliyah.png","Talon.png","Taric.png","Teemo.png","Thresh.png","Tristana.png","Trundle.png","Tryndamere.png","TwistedFate.png","Twitch.png","Udyr.png","Urgot.png","Varus.png","Vayne.png","Veigar.png","Velkoz.png","Vi.png","Viktor.png","Vladimir.png","Volibear.png","Warwick.png","Xayah.png","Xerath.png","XinZhao.png","Yasuo.png","Yorick.png","Yuumi.png","Zac.png","Zed.png","Ziggs.png","Zilean.png","Zoe.png","Zyra.png"];
 var backgroundStyle = {
   width: "100%",
-  height: "1800px",
+  height: "1000px",
   backgroundPosition: 'center',
   backgroundSize: 'cover',
-  backgroundRepeat: 'no-repeat',
-  backgroundImage: `url(${Background})`
+  backgroundImage: `url(${Background})`,
+  backgroundRepeat: 'repeat-y'
 };
 
 class App extends Component {
@@ -25,12 +26,17 @@ class App extends Component {
       const figcapstyle = {textAlign: 'center', color: "white"}
       let curtName = {name}.name.toString()
       let heroName = curtName.substring(0,curtName.length - 4)
+      let heroIndex = hero[heroName].key;
+      let usageRate = "usage rate is: " + heroBigData[heroIndex].usage_rate 
+      let winRate = "win rate is: " + heroBigData[heroIndex].win_rate
+      let topTeammates = "Recommended teamates: " + "\n" + heroBigData[heroIndex].top_teammates
+      let titleName = heroName + "\n" + usageRate + "\n" + winRate + "\n" + topTeammates
       // console.log(curtName)
       return (
               <div style={divstyle}>
                 <img key={index} 
                     style={style} 
-                    title= {heroName} 
+                    title= {titleName}
                     onClick={this.handleClickImage.bind(this, {name})} 
                     className="img-responsive" alt="" 
                     src={require(`./images/heros/${name}`)} />
