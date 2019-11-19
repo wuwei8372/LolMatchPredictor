@@ -60,11 +60,11 @@ class TeamPick extends Component {
     <div className="TeamPick">
 
         <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <h2> My Team picks:</h2>
+            <h1> My Team picks:</h1>
             { myTeamnames }
         </div>
         <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <h2> Opponent Team picks:</h2>
+            <h1> Opponent Team picks:</h1>
             { opponentTeamNames }
         </div>
         <div>

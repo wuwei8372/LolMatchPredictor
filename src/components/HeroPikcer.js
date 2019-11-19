@@ -21,7 +21,7 @@ class HeroPicker extends Component {
         <div className="HeroPicker">
             <footer className="row">
                 <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                    <h2>Please Select Heroes Below: </h2>
+                    <h1>Please Select Heroes Below: </h1>
                     {/* <div>
                         <div className="square"/>
                         <h4> recommended heroes for you are circled in yellow color </h4>
